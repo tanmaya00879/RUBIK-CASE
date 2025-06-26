@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rubik's Cube Solver</title>
+ <style>
+    body {
+  font-family: sans-serif;
+  text-align: center;
+  background: #f0f0f0;
+}
+canvas {
+  border: 1px solid #333;
+  margin-top: 20px;
+}
+ </style>
+ <script>
+    let moves = [];
+
+function scrambleCube() {
+  moves = [];
+  const possibleMoves = ['U', 'D', 'L', 'R', 'F', 'B'];
+  for (let i = 0; i < 20; i++) {
+    const move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+    moves.push(move);
+  }
+  alert("Scrambled with: " + moves.join(" "));
+}
+
+function solveCube() {
+  const solution = moves.slice().reverse().map(m => m + "'");
+  alert("Solution: " + solution.join(" "));
+}
+ </script>
+</head>
+<body>
+  <h1>Rubik's Cube Solver</h1>
+  <canvas id="cubeCanvas" width="400" height="400"></canvas>
+  <button onclick="scrambleCube()">Scramble</button>
+  <button onclick="solveCube()">Solve</button>
+  
+</body>
+</html>
